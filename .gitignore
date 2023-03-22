@@ -1,2 +1,6 @@
 data/*
 !data/inst_gen.py
+
+.vscode/*
+bin
+build
