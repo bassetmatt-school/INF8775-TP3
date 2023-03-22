@@ -15,7 +15,7 @@
 #     $ ./inst_gen.py -n NB_ENCLOS -m TAILLE-S [-x PRÉFIXE]
 #
 #     où :
-#       * NB_BATIMENTS est la taille du problème et 
+#       * NB_BATIMENTS est la taille du problème et
 #       * NB_EXEMPLAIRES est le nombre d'exemplaires différents requis (par défaut 1).
 #
 #     Il est nécessaire de rendre ce script exécutable en utilisant chmod +x
@@ -40,14 +40,17 @@ if __name__ == "__main__":
                         action='store', required=False, metavar='PREFIXE', type=str)
 
     args = parser.parse_args()
+    n = args.nb_enclos
+    m = args.taille_s
     if not args.prefixe:
         args.prefixe = 'ex'
     else:
         args.prefixe = args.prefixe + '_'
-    if args.taille_s > args.nb_enclos:
-        print(f"La taille du sous-ensemble donnée est supérieure au nombre d'enclos, elle a été fixée à {args.nb_enclos}")
-        args.taille_s = args.nb_enclos
+    if m > n:
+        print(f"La taille du sous-ensemble donnée est supérieure au nombre d'enclos, elle a été fixée à {n}")
+        m = n
 
+    pref = args.prefixe
     # Parameters
     max_weight = 100
 
@@ -57,35 +60,32 @@ if __name__ == "__main__":
     theme = []
 
     #generate data
-    for i in range(args.nb_enclos):
+    for i in range(n):
         tailles.append(random.randint(2, 20))
 
         poids_i = []
-        for j in range(args.nb_enclos):
+        for j in range(n):
             poids_i.append(random.randint(1, max_weight))
             if i == j:
                 poids_i[j] = 0
 
         poids.append(poids_i)
 
-    max_dist = np.ceil(np.sqrt(args.taille_s*11)*2)-10
-    theme = random.sample(range(args.nb_enclos),k=args.taille_s)
-
-
-
+    max_dist = np.ceil(2 * np.sqrt(11 * m)) - 10
+    theme = random.sample(range(n),k=m)
 
     # Write
-    with open(args.prefixe + '_n' + str(args.nb_enclos) + '_m' +  str(args.taille_s) + ".txt",'w') as inst:
-        inst.write("%d %d %d\n" % (args.nb_enclos, args.taille_s, max_dist))
+    with open(f"{pref}_n{n}_m{m}.txt",'w') as f:
+        f.write("%d %d %d\n" % (n, m, max_dist))
 
-        for i in range(args.taille_s-1):
-            inst.write("%d " % theme[i])
-        inst.write("%d\n" % theme[-1])
+        for i in range(m-1):
+            f.write("%d " % theme[i])
+        f.write("%d\n" % theme[-1])
 
-        for i in range(args.nb_enclos):
-            inst.write("%d\n" % tailles[i])
+        for i in range(n):
+            f.write("%d\n" % tailles[i])
 
-        for i in range(args.nb_enclos):
-            for j in range(args.nb_enclos-1):
-                inst.write("%d " % poids[i][j])
-            inst.write("%d\n" % poids[i][-1])
+        for i in range(n):
+            for j in range(n-1):
+                f.write("%d " % poids[i][j])
+            f.write("%d\n" % poids[i][-1])
