@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 	std::string file;
 	switch (argc) {
 		case 1:
-			file = "../data/ex_n4_m2.txt";
+			file = "./data/ex_n4_m2.txt";
 			break;
 		case 2:
 			file = argv[1];
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 	printf("\n");
 
 	int sousEnsTot = 0;
-	for (int i = 0; i < S.size(); i++) {
+	for (int i = 0; i < (int) S.size(); i++) {
 		sousEnsTot += sizes[S[i]];
 	}
 	printf("sousTot= %d \n", sousEnsTot);

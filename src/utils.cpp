@@ -54,7 +54,7 @@ void createCoordTable(std::deque<Point>& coords, int total) {
 	int x = 0;
 	int y = 0;
 	coords.push_back(Point(x, y));
-	while (coords.size() < total) {
+	while ((int) coords.size() < total) {
 		while (x < -1 * y + 1) {
 			x++;
 			coords.push_back(Point(x, y));

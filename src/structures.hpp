@@ -35,7 +35,7 @@ public:
 	int size;
 	std::vector<Point> coords;
 
-	Block(int a, int b) {};
+	Block(int a, int b);
 };
 
 #endif /* TP3_STRUCTURES_HEADER */
