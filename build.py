@@ -11,6 +11,7 @@ OUTPUT = "./bin/tp3"
 def build():
     os.system("mkdir -p bin")
     cmd = f"""{COMP} {" ".join([f for f in SRC_FILES])} -I"{" ".join([f for f in INC_FILES])}" {FLAGS} -o {OUTPUT}"""
+    print(cmd)
     os.system(cmd)
 
 
