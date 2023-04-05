@@ -59,7 +59,6 @@ int main(int argc, char* argv[]) {
 		}
 		printf("\n");
 	}
-
 	int total = 0;
 	for (int i = 0; i < n; ++i) {
 		total += sizes[i];
@@ -90,6 +89,6 @@ int main(int argc, char* argv[]) {
 			rest.push_back(block(i, sizes[i]));
 		}
 	}
-
+	delete[] weights;
 	return 0;
 }

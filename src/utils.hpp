@@ -1,5 +1,5 @@
-#ifndef TP2_UTILS_HEADER
-#define TP2_UTILS_HEADER
+#ifndef TP3_UTILS_HEADER
+#define TP3_UTILS_HEADER
 
 #include <string>
 #include <vector>
@@ -11,4 +11,4 @@ int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int
 
 void createCoordTable(std::deque<coord>& coords, int total);
 
-#endif // !TP2_UTILS_HEADER
+#endif // !TP3_UTILS_HEADER
