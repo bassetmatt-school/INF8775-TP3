@@ -2,8 +2,9 @@ import argparse
 import os
 
 COMP = "g++"
-SRC_FILES = ["src/main.cpp", "src/structures.cpp", "src/utils.cpp"]
-INC_FILES = ["src/structures.hpp", "src/utils.hpp"]
+SRC_FILES = ["src/main.cpp", "src/structures.cpp",
+             "src/utils.cpp", "src/algorithms.cpp"]
+INC_FILES = ["src/structures.hpp", "src/utils.hpp", "algorithms.hpp"]
 FLAGS = "-Wall -Wextra -pedantic -O3 -std=c++20"
 OUTPUT = "./bin/tp3"
 
