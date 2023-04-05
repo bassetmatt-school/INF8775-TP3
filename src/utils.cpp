@@ -35,16 +35,6 @@ int* load_file(std::string const& filename, std::vector<int>& S,
 	return weights;
 }
 
-void sort_order(std::vector<int>& order) {
-	int size = order.size();
-	if (order[1] < order[size - 2])
-		return;
-	std::vector<int> tmp(order);
-	for (int i = 1; i < size - 1; ++i) {
-		order[i] = tmp[size - i - 1];
-	}
-}
-
 int distance(int x1, int y1, int x2, int y2) {
 	int d = abs(x2 - x1) + abs(y2 - y1);
 	return d;
