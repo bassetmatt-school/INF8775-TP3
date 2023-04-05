@@ -7,8 +7,8 @@
 
 #include "block.cpp"
 
-int *load_file(std::string const &filename, std::vector<int> &S, std::vector<int> &sizes);
+int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int>& sizes);
 
-void createCoordTable(std::deque<coord> &coords, int total);
+void createCoordTable(std::deque<coord>& coords, int total);
 
 #endif // !TP2_UTILS_HEADER

@@ -2,5 +2,6 @@ data/*
 !data/inst_gen.py
 
 .vscode/*
+!.vscode/settings.json
 bin
 build
