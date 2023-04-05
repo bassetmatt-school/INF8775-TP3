@@ -45,6 +45,6 @@ int main(int argc, char* argv[]) {
 		}
 		printf("\n");
 	}
-
+	delete[] weights;
 	return 0;
 }

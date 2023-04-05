@@ -21,7 +21,7 @@ int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int
 		sizes.push_back(tmp);
 	}
 	int* weights;
-	weights = (int*) malloc(n*n*sizeof(int));
+	weights = new int[n*n];
 	for (int i = 0; i < n*n; ++i) {
 		file_stream >> tmp;
 		weights[i] = tmp;
