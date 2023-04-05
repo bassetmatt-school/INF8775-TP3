@@ -102,5 +102,6 @@
     "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyType": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true
 }

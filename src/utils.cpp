@@ -50,26 +50,26 @@ int distance(int x1, int y1, int x2, int y2) {
 	return d;
 }
 
-void createCoordTable(std::deque<coord>& coords, int total) {
+void createCoordTable(std::deque<Point>& coords, int total) {
 	int x = 0;
 	int y = 0;
-	coords.push_back(coord(x, y));
+	coords.push_back(Point(x, y));
 	while (coords.size() < total) {
 		while (x < -1 * y + 1) {
 			x++;
-			coords.push_back(coord(x, y));
+			coords.push_back(Point(x, y));
 		}
 		while (y < x) {
 			y++;
-			coords.push_back(coord(x, y));
+			coords.push_back(Point(x, y));
 		}
 		while (x > -1 * y) {
 			x--;
-			coords.push_back(coord(x, y));
+			coords.push_back(Point(x, y));
 		}
 		while (y > x) {
 			y--;
-			coords.push_back(coord(x, y));
+			coords.push_back(Point(x, y));
 		}
 	}
 }

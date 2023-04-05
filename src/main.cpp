@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 		sousEnsTot += sizes[S[i]];
 	}
 	printf("sousTot= %d \n", sousEnsTot);
-	std::deque<coord> coords;
+	std::deque<Point> coords;
 	createCoordTable(coords, total);
 	/*//print coords table
 	printf("size: %lu \n",  coords.size());
@@ -79,16 +79,17 @@ int main(int argc, char* argv[]) {
 
 	  printf("%d, %d \n",coords[i].x, coords[i].y );
 	}*/
-	std::list<block> attract;
-	std::list<block> rest;
+	std::list<Block> attract;
+	std::list<Block> rest;
 
 	for (int i = 0; i < n; i++) {
 		if (find(S.begin(), S.end(), i) != S.end()) {
-			attract.push_back(block(i, sizes[i]));
+			attract.push_back(Block(i, sizes[i]));
 		} else {
-			rest.push_back(block(i, sizes[i]));
+			rest.push_back(Block(i, sizes[i]));
 		}
 	}
+
 	delete[] weights;
 	return 0;
 }

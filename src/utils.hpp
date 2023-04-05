@@ -4,11 +4,10 @@
 #include <string>
 #include <vector>
 #include <deque>
-
-#include "block.cpp"
+#include "structures.hpp"
 
 int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int>& sizes);
 
-void createCoordTable(std::deque<coord>& coords, int total);
+void createCoordTable(std::deque<Point>& coords, int total);
 
-#endif // !TP3_UTILS_HEADER
+#endif /* TP3_UTILS_HEADER */
