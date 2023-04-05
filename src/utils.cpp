@@ -37,10 +37,6 @@ int* load_file(std::string const& filename, std::vector<int>& S,
 	return weights;
 }
 
-int distance(int x1, int y1, int x2, int y2) {
-	int d = abs(x2 - x1) + abs(y2 - y1);
-	return d;
-}
 
 void createCoordTable(int total) {
 	coordTable = std::vector<Point>(total);
@@ -65,5 +61,19 @@ void createCoordTable(int total) {
 			coordTable[i++] = Point(x, --y);
 			if (i >= total) return;
 		}
+	}
+}
+
+void printSolution(std::vector<Block> blockList) {
+	printf("\n");
+	int Nblocks = blockList.size();
+	for (int i = 0; i < Nblocks; ++i) {
+		printf("%d: ", i);
+		Block b = blockList[i];
+		for (int posIdx = b.firstIdInList; posIdx < b.firstIdInList + b.size; ++posIdx) {
+			Point p = coordTable[posIdx];
+			printf("(%2ld, %2ld) ", p.x, p.y);
+		}
+		printf("\n");
 	}
 }

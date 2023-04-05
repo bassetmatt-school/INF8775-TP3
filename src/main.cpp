@@ -1,17 +1,18 @@
-#include "utils.hpp"
 #include <algorithm>
 #include <deque>
 #include <list>
 #include <numeric>
 #include <iterator>
-
 #include <iostream>
+
+#include "utils.hpp"
+#include "algorithms.hpp"
 
 int main(int argc, char* argv[]) {
 	std::string file;
 	switch (argc) {
 		case 1:
-			file = "./data/ex_n4_m2.txt";
+			file = "./data/n1000_m500_V-8435325196.txt";
 			break;
 		case 2:
 			file = argv[1];
@@ -70,8 +71,8 @@ int main(int argc, char* argv[]) {
 	/* Order of the blocks */
 	std::vector<int> order(n);
 	std::iota(order.begin(), order.end(), 0);
-	for (int i : order) printf("%d|", i);
-	printf("\n");
+	// for (int i : order) printf("%d|", i);
+	// printf("\n");
 
 	int sousEnsTot = 0;
 	for (int i = 0; i < (int) subset.size(); i++) {
@@ -91,7 +92,25 @@ int main(int argc, char* argv[]) {
 		blockList.push_back(Block(i, sizes[i], s));
 		s += sizes[i];
 	}
+	int* distanceMatrix = new int[n*n];
+	distanceMatrix[0] = 0;
+
+	updateBlocks(order, blockList);
+	updateDistances(blockList, distanceMatrix);
+	// for (int i = 0; i < n; ++i) {
+	// 	for (int j = 0; j < n; ++j) {
+	// 		printf("%3d ", distanceMatrix[n * i + j]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	// printSolution(blockList);
+
+	long score;
+	score = getScore(weights, distanceMatrix, subset, n, k);
+	printf("Score = %ld\n", score);
 
 	delete[] weights;
+	delete[] distanceMatrix;
 	return 0;
 }

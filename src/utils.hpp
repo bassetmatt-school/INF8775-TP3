@@ -13,4 +13,5 @@ extern std::vector<Point> coordTable;
 
 void createCoordTable(int total);
 
+void printSolution(std::vector<Block> blockList);
 #endif /* TP3_UTILS_HEADER */
