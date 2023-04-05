@@ -31,11 +31,14 @@ int distance(Point const& p1, Point const& p2);
 
 class Block {
 public:
+	/* Never changes */
 	int id;
+	/* Never changes */
 	int size;
-	std::vector<Point> coords;
+	/* Changes all the time */
+	int firstIdInList;
 
-	Block(int a, int b);
+	Block(int id, int size, int firstId);
 };
 
 #endif /* TP3_STRUCTURES_HEADER */

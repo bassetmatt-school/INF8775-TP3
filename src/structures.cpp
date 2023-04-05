@@ -5,8 +5,8 @@ int distance(Point const& p1, Point const& p2) {
 	return abs(p1.x - p2.x) + abs(p1.y - p2.y);
 }
 
-Block::Block(int a, int b) {
-	this->id = a;
-	this->size = b;
-	// initialize vector ??
+Block::Block(int id, int size, int firstId) {
+	this->id = id;
+	this->size = size;
+	this->firstIdInList = firstId;
 };

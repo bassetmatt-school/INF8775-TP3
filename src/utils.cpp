@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+std::vector<Point> coordTable;
+
 int* load_file(std::string const& filename, std::vector<int>& S,
 	std::vector<int>& sizes) {
 	std::ifstream file_stream(filename);
@@ -40,26 +42,28 @@ int distance(int x1, int y1, int x2, int y2) {
 	return d;
 }
 
-void createCoordTable(std::deque<Point>& coords, int total) {
+void createCoordTable(int total) {
+	coordTable = std::vector<Point>(total);
 	int x = 0;
 	int y = 0;
-	coords.push_back(Point(x, y));
-	while ((int) coords.size() < total) {
+	int i = 0;
+	coordTable[i++] = Point(x, y);
+	while (true) {
 		while (x < -1 * y + 1) {
-			x++;
-			coords.push_back(Point(x, y));
+			coordTable[i++] = Point(++x, y);
+			if (i >= total) return;
 		}
 		while (y < x) {
-			y++;
-			coords.push_back(Point(x, y));
+			coordTable[i++] = Point(x, ++y);
+			if (i >= total) return;
 		}
 		while (x > -1 * y) {
-			x--;
-			coords.push_back(Point(x, y));
+			coordTable[i++] = Point(--x, y);
+			if (i >= total) return;
 		}
 		while (y > x) {
-			y--;
-			coords.push_back(Point(x, y));
+			coordTable[i++] = Point(x, --y);
+			if (i >= total) return;
 		}
 	}
 }

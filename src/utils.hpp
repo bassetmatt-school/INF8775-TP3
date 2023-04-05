@@ -6,8 +6,11 @@
 #include <deque>
 #include "structures.hpp"
 
+// TODO: Do better function
 int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int>& sizes);
 
-void createCoordTable(std::deque<Point>& coords, int total);
+extern std::vector<Point> coordTable;
+
+void createCoordTable(int total);
 
 #endif /* TP3_UTILS_HEADER */
