@@ -10,3 +10,8 @@ Block::Block(int id, int size, int firstId) {
 	this->size = size;
 	this->firstIdInList = firstId;
 };
+
+void Block::getFirstIdAndSize(int* fId, int* size) {
+	*fId = this->firstIdInList;
+	*size = this->size;
+}

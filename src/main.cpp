@@ -4,7 +4,11 @@
 #include <numeric>
 #include <iterator>
 #include <iostream>
-
+#define RENDER
+#ifdef RENDER
+#include <SDL2/SDL.h>
+#include "renderer.hpp"
+#endif // RENDER
 #include "utils.hpp"
 #include "algorithms.hpp"
 
@@ -12,7 +16,7 @@ int main(int argc, char* argv[]) {
 	std::string file;
 	switch (argc) {
 		case 1:
-			file = "./data/n1000_m500_V-8435325196.txt";
+			file = "./data/ex_n1000_m500.txt";
 			break;
 		case 2:
 			file = argv[1];
@@ -109,6 +113,12 @@ int main(int argc, char* argv[]) {
 	long score;
 	score = getScore(weights, distanceMatrix, subset, n, k);
 	printf("Score = %ld\n", score);
+
+#ifdef RENDER
+	DisplayManager dm(total, &blockList);
+	dm.initRenderer();
+	dm.drawLoop();
+#endif // RENDER
 
 	delete[] weights;
 	delete[] distanceMatrix;

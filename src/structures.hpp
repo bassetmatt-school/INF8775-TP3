@@ -39,6 +39,9 @@ public:
 	int firstIdInList;
 
 	Block(int id, int size, int firstId);
+	void getFirstIdAndSize(int* fId, int* size);
 };
+
+using BlockList = std::vector<Block>;
 
 #endif /* TP3_STRUCTURES_HEADER */

@@ -5,3 +5,4 @@ data/*
 !.vscode/settings.json
 bin
 build
+test.py
