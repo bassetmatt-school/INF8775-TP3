@@ -15,7 +15,7 @@ DisplayManager::DisplayManager(int size, BlockList* p_blockList) {
 }
 
 void DisplayManager::getColors() {
-	std::string filename("./config/colors");
+	std::string filename("../config/colors");
 	std::ifstream fileStream(filename);
 	if (!fileStream.is_open()) {
 		std::cout << "Couldn't open file\n";

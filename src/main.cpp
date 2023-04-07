@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
 	std::string file;
 	switch (argc) {
 		case 1:
-			file = "./data/ex_n1000_m500.txt";
+			file = "../data/ex_n1000_m500.txt";
 			break;
 		case 2:
 			file = argv[1];
