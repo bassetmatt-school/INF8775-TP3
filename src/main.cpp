@@ -4,7 +4,7 @@
 #include <numeric>
 #include <iterator>
 #include <iostream>
-#define RENDER
+// #define RENDER
 #ifdef RENDER
 #include <SDL2/SDL.h>
 #include "renderer.hpp"
