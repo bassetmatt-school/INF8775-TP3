@@ -1,10 +1,7 @@
 #include <algorithm>
-#include <deque>
-#include <list>
 #include <numeric>
 #include <iterator>
 #include <iostream>
-// #define RENDER
 #ifdef RENDER
 #include <SDL2/SDL.h>
 #include "renderer.hpp"
@@ -90,7 +87,7 @@ int main(int argc, char* argv[]) {
 
 	// 	printf("%d: %ld, %ld \n", i, coordTable[i].x, coordTable[i].y);
 	// }
-	std::vector<Block> blockList;
+	BlockList blockList;
 	int s = 0;
 	for (int i : order) {
 		blockList.push_back(Block(i, sizes[i], s));

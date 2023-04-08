@@ -1,7 +1,7 @@
 #include "algorithms.hpp"
 #include "utils.hpp"
 
-void updateBlocks(std::vector<int> const& order, std::vector<Block>& blockList) {
+void updateBlocks(std::vector<int> const& order, BlockList& blockList) {
 	int s = 0;
 	for (int i : order) {
 		blockList[i].firstIdInList = s;
@@ -22,7 +22,7 @@ int blockDistance(Block const& b1, Block const& b2) {
 	return dist;
 }
 
-void updateDistances(std::vector<Block> const& blockList, int* distanceMatrix) {
+void updateDistances(BlockList const& blockList, int* distanceMatrix) {
 	int Nblocks = blockList.size();
 	for (int i = 0; i < Nblocks; ++i) {
 		for (int j = i+1; j < Nblocks; ++j) {

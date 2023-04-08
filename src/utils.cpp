@@ -1,16 +1,15 @@
-#include "utils.hpp"
-
 #include <fstream>
 #include <iostream>
+#include "utils.hpp"
 
-std::vector<Point> coordTable;
+PointList coordTable;
 
 int* load_file(std::string const& filename, std::vector<int>& S,
 	std::vector<int>& sizes) {
 	std::ifstream fileStream(filename);
 	if (!fileStream.is_open()) {
-		std::cout << "Couldn't open file\n";
-		return nullptr;
+		printf("Couldn't open file %s.\n", filename.c_str());
+		exit(1);
 	}
 
 	int n, m, k;
@@ -39,7 +38,7 @@ int* load_file(std::string const& filename, std::vector<int>& S,
 
 
 void createCoordTable(int total) {
-	coordTable = std::vector<Point>(total);
+	coordTable = PointList(total);
 	int x = 0;
 	int y = 0;
 	int i = 0;
@@ -64,7 +63,7 @@ void createCoordTable(int total) {
 	}
 }
 
-void printSolution(std::vector<Block> blockList) {
+void printSolution(BlockList blockList) {
 	printf("\n");
 	int Nblocks = blockList.size();
 	for (int i = 0; i < Nblocks; ++i) {

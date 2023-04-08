@@ -18,8 +18,8 @@ void DisplayManager::getColors() {
 	std::string filename("../config/colors");
 	std::ifstream fileStream(filename);
 	if (!fileStream.is_open()) {
-		std::cout << "Couldn't open file\n";
-		return;
+		printf("Couldn't open file %s.\n", filename.c_str());
+		exit(1);
 	}
 	this->colList = ColorList(100);
 	int r, g, b;

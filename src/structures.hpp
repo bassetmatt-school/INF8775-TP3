@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 
-
 /* Common Structures */
 class Point {
 public:
@@ -28,6 +27,7 @@ public:
 
 int distance(Point const& p1, Point const& p2);
 
+using PointList = std::vector<Point>;
 
 class Block {
 public:

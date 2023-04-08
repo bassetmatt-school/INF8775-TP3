@@ -3,15 +3,14 @@
 
 #include <string>
 #include <vector>
-#include <deque>
 #include "structures.hpp"
 
 // TODO: Do better function
 int* load_file(std::string const& filename, std::vector<int>& S, std::vector<int>& sizes);
 
-extern std::vector<Point> coordTable;
+extern PointList coordTable;
 
 void createCoordTable(int total);
 
-void printSolution(std::vector<Block> blockList);
+void printSolution(BlockList blockList);
 #endif /* TP3_UTILS_HEADER */
