@@ -28,6 +28,8 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 target_link_libraries(tp3 ${SDL2_LIBRARIES})
 
+add_definitions(-DRENDER)
+
 set_target_properties(tp3
 	PROPERTIES
 	RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin

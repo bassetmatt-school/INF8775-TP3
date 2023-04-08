@@ -51,3 +51,6 @@ long getScore(int* weights, int* distanceMatrix, std::vector<int> const& subset,
 	long bonusPoints = bonus ? m*m : 0;
 	return bonusPoints - sumDist;
 }
+
+void randomizeOrder(std::vector<int>& order);
+void twoSwap(std::vector<int>& order);

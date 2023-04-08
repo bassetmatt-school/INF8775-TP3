@@ -10,5 +10,8 @@ void updateDistances(BlockList const& blockList, int* distanceMatrix);
 
 long getScore(int* weights, int* distanceMatrix, std::vector<int> const& subset, int n, int k);
 
-void randomizeOrder(PointList& order);
+void randomizeOrder(std::vector<int>& order);
+
+void twoSwap(std::vector<int>& order);
+
 #endif //  TP3_ALGORITHM_HEADER
