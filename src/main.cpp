@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 	std::string file;
 	switch (argc) {
 		case 1:
-			file = "../data/ex_n10_m5.txt";
+			file = "../data/n1000_m500_V-8435325196.txt";
 			break;
 		case 2:
 			file = argv[1];
@@ -25,17 +25,18 @@ int main(int argc, char* argv[]) {
 	std::vector<int> subset;
 	std::vector<int> sizes;
 	int* weights;
+	int* weightsSum;
 	int k, n, m;
-	load_file(file, subset, sizes, &weights, &n, &m, &k);
+	load_file(file, subset, sizes, &weights, &weightsSum, &n, &m, &k);
 	symmetrizeMatrix(&weights, n);
 
-	printf("\n\n");
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < n; ++j) {
-			printf("%3d ", weights[n * i + j]);
-		}
-		printf("\n");
-	}
+	// printf("\n\n");
+	// for (int i = 0; i < n; ++i) {
+	// 	for (int j = 0; j < n; ++j) {
+	// 		printf("%3d ", weights[n * i + j]);
+	// 	}
+	// 	printf("\n");
+	// }
 	int sizesSum = 0;
 	for (int i = 0; i < n; sizesSum += sizes[i++]);
 	printf("Total size: %d\n", sizesSum);
@@ -67,6 +68,7 @@ int main(int argc, char* argv[]) {
 	score = getScore(weights, distanceMatrix, subset, n, k);
 	printf("Score = %ld\n", score);
 
+	printSolution(blockList, false);
 #ifdef RENDER
 	DisplayManager dm(sizesSum, &blockList);
 	dm.initRenderer();

@@ -9,6 +9,7 @@ void load_file(
 	std::vector<int>& subset,
 	std::vector<int>& sizes,
 	int** p_weights,
+	int** p_weightsSum,
 	int* p_n,
 	int* p_m,
 	int* p_k) {
@@ -41,8 +42,17 @@ void load_file(
 	}
 	fileStream.close();
 
+	int* weightsSum = new int[n];
+	for (int i = 0; i < n; ++i) {
+		weightsSum[i] = 0;
+		for (int j = 0; j < n; ++j) {
+			weightsSum[i] += weights[n * i + j];
+		}
+	}
+
 	/* Updates pointer variables values */
 	*p_weights = weights;
+	*p_weightsSum = weightsSum;
 	*p_n = n; *p_m = m; *p_k = k;
 }
 
@@ -106,7 +116,7 @@ void printSolution(BlockList blockList, bool readable) {
 			if (readable)
 				printf("(%2ld, %2ld) ", p.x, p.y);
 			else
-				printf("%ld %ld", p.x, p.y);
+				printf("%ld %ld ", p.x, p.y);
 		}
 		printf("\n");
 	}

@@ -13,6 +13,7 @@ void load_file(
 	std::vector<int>& sizes,
 	/* Pointer towards the weight matrix */
 	int** p_weights,
+	int** p_weightsSum,
 	int* p_n,
 	int* p_m,
 	int* p_k

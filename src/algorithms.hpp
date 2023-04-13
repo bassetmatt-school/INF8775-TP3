@@ -10,6 +10,8 @@ void updateDistances(BlockList const& blockList, int* distanceMatrix);
 
 long getScore(int* weights, int* distanceMatrix, std::vector<int> const& subset, int n, int k);
 
+void initialSort(std::vector<int>& order, BlockList const& blockList, int const* weights);
+
 void randomizeOrder(std::vector<int>& order);
 
 void twoSwap(std::vector<int>& order);
