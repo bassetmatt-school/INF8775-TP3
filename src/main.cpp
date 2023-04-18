@@ -11,6 +11,7 @@
 
 int main(int argc, char* argv[]) {
 	std::string file;
+	bool p = false;
 	switch (argc) {
 		case 1:
 			file = "../data/n1000_m500_V-8435325196.txt";
@@ -18,7 +19,12 @@ int main(int argc, char* argv[]) {
 		case 2:
 			file = argv[1];
 			break;
+		case 3:
+			file = argv[1];
+			p = *argv[2] - 48;
+			break;
 		default:
+			fprintf(stderr, "Incorrect number of arguments\n");
 			exit(1);
 			break;
 	}
@@ -66,9 +72,13 @@ int main(int argc, char* argv[]) {
 
 	long score;
 	score = getScore(weights, distanceMatrix, subset, n, k);
-	printf("Score = %ld\n", score);
-
-	printSolution(blockList, false);
+	// printf("Score = %ld\n", score);
+	/* Expected print format for score : */
+	printf("%ld\n", score);
+	// TODO: Wrap everything in a loop that tries to improve the solution
+	if (p) {
+		printSolution(blockList, false);
+	}
 #ifdef RENDER
 	DisplayManager dm(sizesSum, &blockList);
 	dm.initRenderer();
