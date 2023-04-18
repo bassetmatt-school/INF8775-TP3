@@ -5,7 +5,6 @@
 #include <vector>
 #include "structures.hpp"
 
-// TODO: Do better function
 void load_file(
 	std::string const& filename,
 	/* Vector of indexes for m² bonus point subset */
