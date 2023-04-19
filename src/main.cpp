@@ -2,10 +2,6 @@
 #include <numeric>
 #include <iterator>
 #include <iostream>
-#ifdef RENDER
-#include <SDL2/SDL.h>
-#include "renderer.hpp"
-#endif // RENDER
 #include "utils.hpp"
 #include "algorithms.hpp"
 
@@ -128,14 +124,6 @@ int main(int argc, char* argv[]) {
 	}
 
 
-
-
-
-#ifdef RENDER
-	DisplayManager dm(sizesSum, &blockList);
-	dm.initRenderer();
-	dm.drawLoop();
-#endif // RENDER
 
 	delete[] weights;
 	delete[] distanceMatrix;
