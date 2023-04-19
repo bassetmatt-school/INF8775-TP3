@@ -5,6 +5,7 @@
 #include <vector>
 #include "structures.hpp"
 
+// TODO: Do better function
 void load_file(
 	std::string const& filename,
 	/* Vector of indexes for m² bonus point subset */
@@ -29,4 +30,8 @@ void createCoordTable(int total);
 
 /* Prints a solution. Either to expected output or in a more readbable way */
 void printSolution(BlockList blockList, bool readable);
+
+/* verifies if new score is better */
+bool checkSolution(long& tempScore, long& score);
+
 #endif /* TP3_UTILS_HEADER */

@@ -2,6 +2,9 @@
 #define TP3_ALGORITHM_HEADER
 
 #include <vector>
+#include <list>
+#include <utility>
+#include <algorithm>
 #include "structures.hpp"
 
 void updateBlocks(std::vector<int> const& order, BlockList& blockList);
@@ -14,6 +17,10 @@ void initialSort(std::vector<int>& order, BlockList const& blockList, int const*
 
 void randomizeOrder(std::vector<int>& order);
 
-void twoSwap(std::vector<int>& order);
+void sizeSwap(std::vector<int>& order, int subsetSize, std::vector<int> sizes);
+
+void sizeSwapNotSubset(std::vector<int>& order, int subsetSize, int setSize, std::vector<int> sizes);
+
+void putSubTogether(std::vector<int>& order, std::vector<int>& subset, int n);
 
 #endif //  TP3_ALGORITHM_HEADER

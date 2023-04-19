@@ -12,7 +12,7 @@ LIBS = ""
 
 
 def build():
-    os.system("mkdir -p bin")
+    #os.system("mkdir -p bin")
     cmd = f"""{COMP}\
     {" ".join(["src/" + f for f in SRC_FILES])}\
     -I"{" ".join(["str/" + f for f in INC_FILES])}"\

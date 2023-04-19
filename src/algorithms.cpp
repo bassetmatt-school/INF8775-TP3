@@ -57,4 +57,71 @@ void initialSort(std::vector<int>& order, BlockList const& blockList, int const*
 }
 
 void randomizeOrder(std::vector<int>& order);
-void twoSwap(std::vector<int>& order);
+
+void sizeSwap(std::vector<int>& order, int subsetSize, std::vector<int> sizes) {
+	std::vector<std::pair<int, int>> tempOrder;
+	std::vector<int>::iterator it1;
+	std::vector<int>::iterator it2;
+
+	for (int i=0; i < subsetSize; i++) {
+		tempOrder.push_back(std::make_pair(order[i], sizes[order[i]]));
+	}
+
+	it1 = order.begin();
+	it2 = order.begin();
+	advance(it2, subsetSize);
+	order.erase(it1, it2);
+
+	std::sort(tempOrder.begin(), tempOrder.end(), [](auto& left, auto& right) {
+		return left.second < right.second;
+		});
+
+	for (int i=subsetSize-1; i >= 0; i--) {
+		order.insert(order.begin(), tempOrder[i].first);
+	}
+}
+
+void sizeSwapNotSubset(std::vector<int>& order, int subsetSize, int setSize, std::vector<int> sizes) {
+	std::vector<std::pair<int, int>> tempOrder;
+	std::vector<int>::iterator it1;
+	std::vector<int>::iterator it2;
+
+	for (int i=subsetSize; i < setSize; i++) {
+		tempOrder.push_back(std::make_pair(order[i], sizes[order[i]]));
+	}
+
+	it1 = order.begin();
+	it2 = order.end();
+	advance(it1, subsetSize);
+	order.erase(it1, it2);
+
+	std::sort(tempOrder.begin(), tempOrder.end(), [](auto& left, auto& right) {
+		return left.second < right.second;
+		});
+
+	int notSubset = setSize - subsetSize;
+	for (int i=0; i < notSubset; i++) {
+		order.insert(order.end(), tempOrder[i].first);
+	}
+}
+
+void putSubTogether(std::vector<int>& order,
+	std::vector<int>& subset, int n) {
+	std::list<int> tempOrder;
+
+	for (int i=0; i<n;i++) {
+		tempOrder.push_back(i);
+	}
+
+	for (int i : subset) {
+		tempOrder.remove(i);
+		tempOrder.push_front(i);
+	}
+
+	std::list<int>::iterator it;
+	int i= 0;
+	for (it=tempOrder.begin(); it!=tempOrder.end(); ++it) {
+		order[i]= *it;
+		i++;
+	}
+}

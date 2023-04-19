@@ -2,29 +2,26 @@
 #include <numeric>
 #include <iterator>
 #include <iostream>
-#ifdef RENDER
+/*#ifdef RENDER
 #include <SDL2/SDL.h>
 #include "renderer.hpp"
-#endif // RENDER
+#endif // RENDER*/
 #include "utils.hpp"
 #include "algorithms.hpp"
 
 int main(int argc, char* argv[]) {
 	std::string file;
-	bool p = false;
 	switch (argc) {
 		case 1:
-			file = "../data/n1000_m500_V-8435325196.txt";
+			file = "./data/n100_m50_V-8613404.txt";
+			//   ex_n10_m5.txt
+			//n1000_m500_V-8435325196.txt
+			//n20_m15_V-74779.txt
 			break;
 		case 2:
 			file = argv[1];
 			break;
-		case 3:
-			file = argv[1];
-			p = *argv[2] - 48;
-			break;
 		default:
-			fprintf(stderr, "Incorrect number of arguments\n");
 			exit(1);
 			break;
 	}
@@ -67,18 +64,81 @@ int main(int argc, char* argv[]) {
 	int* distanceMatrix = new int[n*n];
 	distanceMatrix[0] = 0;
 
+	/*printf("order elements are : ");
+	for(int i=0; i < order.size(); i++)
+	printf("%d",  order[i]) ;*/
+
+	//**********first in numerical order*********
 	updateBlocks(order, blockList);
 	updateDistances(blockList, distanceMatrix);
-
 	long score;
 	score = getScore(weights, distanceMatrix, subset, n, k);
-	// printf("Score = %ld\n", score);
-	/* Expected print format for score : */
-	printf("%ld\n", score);
-	// TODO: Wrap everything in a loop that tries to improve the solution
-	if (p) {
-		printSolution(blockList, false);
+	printf("\n");
+	printf("en ordre Score = %ld\n", score);
+	//printSolution(blockList, false);
+
+	std::vector<int> tempOrder;
+
+	//********putting subset together at the center********
+	tempOrder = order;
+	putSubTogether(tempOrder, subset, n);
+	/* printf("order elements are : ");
+	  for(int i=0; i < order.size(); i++)
+	  printf("%d ",  order[i]) ;
+	  printf("\n");*/
+	updateBlocks(tempOrder, blockList);
+	updateDistances(blockList, distanceMatrix);
+
+	long tempScore;
+	tempScore = getScore(weights, distanceMatrix, subset, n, k);
+
+	if (checkSolution(tempScore, score)) {
+		printf("subset regroupe Score = %ld\n", tempScore);
+		order= tempOrder;
+		//printSolution(blockList, false);
 	}
+
+	//******ordering elements in the subset based on sizes*****
+	tempOrder = order;
+	sizeSwap(tempOrder, m, sizes);
+	/*printf("order elements are : ");
+	 for(int i=0; i < tempOrder.size(); i++)
+	 printf("%d ",  tempOrder[i]) ;
+	 printf("\n");*/
+
+	updateBlocks(tempOrder, blockList);
+	updateDistances(blockList, distanceMatrix);
+	tempScore = getScore(weights, distanceMatrix, subset, n, k);
+
+	if (checkSolution(tempScore, score)) {
+		printf("subset en ordre Score = %ld\n", tempScore);
+		order= tempOrder;
+		//printSolution(blockList, false);
+	}
+
+	//*****ordering elements not in the subset******
+	tempOrder = order;
+	sizeSwapNotSubset(tempOrder, m, n, sizes);
+	/*printf("order elements are : ");
+	for(int i=0; i < tempOrder.size(); i++)
+	printf("%d ",  tempOrder[i]) ;
+	printf("\n");*/
+
+	updateBlocks(tempOrder, blockList);
+	updateDistances(blockList, distanceMatrix);
+	tempScore = getScore(weights, distanceMatrix, subset, n, k);
+
+
+	if (checkSolution(tempScore, score)) {
+		printf("2 ens en ordre Score = %ld\n", tempScore);
+		order= tempOrder;
+		//printSolution(blockList, false);
+	}
+
+
+
+
+
 #ifdef RENDER
 	DisplayManager dm(sizesSum, &blockList);
 	dm.initRenderer();
