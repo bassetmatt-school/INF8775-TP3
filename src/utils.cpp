@@ -123,7 +123,6 @@ void printSolution(BlockList blockList, bool readable) {
 }
 
 bool checkSolution(long& tempScore, long& score) {
-	printf("test ");
 	if (tempScore - score > 0) {
 		score = tempScore;
 		return true;
