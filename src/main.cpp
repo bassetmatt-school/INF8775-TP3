@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 	int subsetSum = 0;
 	for (int s_i : subset) subsetSum += sizes[s_i];
 
-	printf("Subset element sizes: %d \n", subsetSum);
+	//printf("Subset element sizes: %d \n", subsetSum);
 
 	createCoordTable(sizesSum);
 
@@ -74,8 +74,8 @@ int main(int argc, char* argv[]) {
 	long score;
 	score = getScore(weights, distanceMatrix, subset, n, k);
 	printf("\n");
-	printf("en ordre Score = %ld\n", score);
-	//printSolution(blockList, false);
+	//printf("en ordre Score = %ld\n", score);
+	printSolution(blockList, false);
 
 	std::vector<int> tempOrder;
 
@@ -93,9 +93,9 @@ int main(int argc, char* argv[]) {
 	tempScore = getScore(weights, distanceMatrix, subset, n, k);
 
 	if (checkSolution(tempScore, score)) {
-		printf("subset regroupe Score = %ld\n", tempScore);
+		//printf("subset grouped: Score = %ld\n", tempScore);
 		order= tempOrder;
-		//printSolution(blockList, false);
+		printSolution(blockList, false);
 	}
 
 	//******ordering elements in the subset based on sizes*****
@@ -111,9 +111,9 @@ int main(int argc, char* argv[]) {
 	tempScore = getScore(weights, distanceMatrix, subset, n, k);
 
 	if (checkSolution(tempScore, score)) {
-		printf("subset en ordre Score = %ld\n", tempScore);
+		//printf("subset in order: Score = %ld\n", tempScore);
 		order= tempOrder;
-		//printSolution(blockList, false);
+		printSolution(blockList, false);
 	}
 
 	//*****ordering elements not in the subset******
@@ -130,9 +130,9 @@ int main(int argc, char* argv[]) {
 
 
 	if (checkSolution(tempScore, score)) {
-		printf("2 ens en ordre Score = %ld\n", tempScore);
+		//printf("2 sections in order: Score = %ld\n", tempScore);
 		order= tempOrder;
-		//printSolution(blockList, false);
+		printSolution(blockList, false);
 	}
 
 
